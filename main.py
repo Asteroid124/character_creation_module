@@ -1,8 +1,15 @@
+"""
+Код новой RPG-игры — «Питонические Воины: Тёмная Сторона Кода».
+Описание работы функций.
+Добавление модуля, который запускает заставку для игры.
+"""
 from random import randint
 
+from graphic_arts.starts_game_banner import run_screensaver
 
 def attack(char_name: str,
            char_class: str) -> str:
+    """Определение урона персонажей разных видов."""
     if char_class == 'warrior':
         return (f'{char_name} '
                 f'нанёс урон противнику равный '
@@ -20,6 +27,7 @@ def attack(char_name: str,
 
 def defence(char_name: str,
             char_class: str) -> str:
+    """Блокировка урона."""
     if char_class == 'warrior':
         return (f'{char_name} блокировал {10 + randint(5, 10)} урона')
     if char_class == 'mage':
@@ -31,6 +39,7 @@ def defence(char_name: str,
 
 def special(char_name: str,
             char_class: str) -> str:
+    """Описание специальных умений."""
     if char_class == 'warrior':
         return (f'{char_name} '
                 f'применил специальное умение «Выносливость {80 + 25}»')
@@ -45,6 +54,7 @@ def special(char_name: str,
 
 def start_training(char_name: str,
                    char_class: str) -> str:
+    """Описание навыков персонажа."""
     if char_class == 'warrior':
         print(f'{char_name}, ты Воитель — отличный боец ближнего боя.')
     if char_class == 'mage':
@@ -70,6 +80,7 @@ def start_training(char_name: str,
 
 
 def choice_char_class() -> str:
+    """Выводим название персонажа и его описание."""
     approve_choice: str = None
     char_class: str = None
     while approve_choice != 'y':
@@ -93,7 +104,8 @@ def choice_char_class() -> str:
     return char_class
 
 
-def main() -> None:
+if __name__ == '__main__':
+    run_screensaver()
     print('Приветствую тебя, искатель приключений!')
     print('Прежде чем начать игру...')
     char_name: str = input('...назови себя: ')
@@ -102,7 +114,7 @@ def main() -> None:
     print('Ты можешь выбрать один из трёх путей силы:')
     print('Воитель, Маг, Лекарь')
     char_class: str = choice_char_class()
-    print(start_training(char_name, char_class))
+    print(start_training(char_name, char_class)) 
 
 
 main()
